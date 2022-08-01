@@ -2,8 +2,8 @@ import { FC, useState, Fragment, useEffect } from 'react';
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import { WebBundlr } from '@bundlr-network/client';
-import { LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
+import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
 import { notify } from '../utils/notifications';
 
@@ -131,7 +131,7 @@ export const UploadMetadata: FC = ({}) => {
     balance = balance.toNumber();
 
     if (balance < amount) {
-      await bundlr.fund(LAMPORTS_PER_SOL);
+      await bundlr.fund(LAMPORTS_PER_SAFE);
     }
 
     const imageResult = await bundlr.uploader.upload(imageFile, [
@@ -155,7 +155,7 @@ export const UploadMetadata: FC = ({}) => {
     balance = balance.toNumber();
 
     if (balance < amount) {
-      await bundlr.fund(LAMPORTS_PER_SOL);
+      await bundlr.fund(LAMPORTS_PER_SAFE);
     }
 
     const metadataResult = await bundlr.uploader.upload(metadata, [

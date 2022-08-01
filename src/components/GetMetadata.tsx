@@ -1,8 +1,8 @@
 import { FC, useState, useCallback } from 'react';
-import { useConnection } from '@solana/wallet-adapter-react';
-import { PublicKey } from '@solana/web3.js';
-import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
-import { findMetadataPda } from '@metaplex-foundation/js';
+import { useConnection } from '@j0nnyboi/wallet-adapter-react';
+import { PublicKey } from '@safecoin/web3.js';
+import { Metadata } from '@leda-mint-io/lpl-token-metadata';
+import { findMetadataPda } from '@leda-mint-io/js';
 
 
 export const GetMetadata: FC = () => {

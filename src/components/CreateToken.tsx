@@ -1,9 +1,9 @@
 import { FC, useCallback, useState } from 'react';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Keypair, SystemProgram, Transaction } from '@solana/web3.js';
-import { MINT_SIZE, TOKEN_PROGRAM_ID, createInitializeMintInstruction, getMinimumBalanceForRentExemptMint, getAssociatedTokenAddress, createAssociatedTokenAccountInstruction, createMintToInstruction } from '@solana/spl-token';
-import { DataV2, createCreateMetadataAccountV2Instruction } from '@metaplex-foundation/mpl-token-metadata';
-import { findMetadataPda } from '@metaplex-foundation/js';
+import { useConnection, useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { Keypair, SystemProgram, Transaction } from '@safecoin/web3.js';
+import { MINT_SIZE, TOKEN_PROGRAM_ID, createInitializeMintInstruction, getMinimumBalanceForRentExemptMint, getAssociatedTokenAddress, createAssociatedTokenAccountInstruction, createMintToInstruction } from '@safecoin/safe-token';
+import { DataV2, createCreateMetadataAccountV2Instruction } from '@leda-mint-io/lpl-token-metadata';
+import { findMetadataPda } from '@leda-mint-io/js';
 
 export const CreateToken: FC = () => {
   const { connection } = useConnection();

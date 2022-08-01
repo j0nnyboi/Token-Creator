@@ -1,11 +1,11 @@
 import { FC, useCallback, useState } from 'react';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Transaction, PublicKey } from '@solana/web3.js';
+import { useConnection, useWallet } from '@j0nnyboi/wallet-adapter-react';
+import { Transaction, PublicKey } from '@safecoin/web3.js';
 import {
   DataV2,
   createUpdateMetadataAccountV2Instruction,
-} from "@metaplex-foundation/mpl-token-metadata";
-import { findMetadataPda } from '@metaplex-foundation/js';
+} from "@leda-mint-io/lpl-token-metadata";
+import { findMetadataPda } from '@leda-mint-io/js';
 
 export const UpdateMetadata: FC = () => {
   const { connection } = useConnection();

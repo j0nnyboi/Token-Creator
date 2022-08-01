@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 // Wallet
-import { useWallet, useConnection } from '@solana/wallet-adapter-react';
+import { useWallet, useConnection } from '@j0nnyboi/wallet-adapter-react';
 
 // Components
 import { RequestAirdrop } from '../../components/RequestAirdrop';

@@ -1,6 +1,6 @@
-import { WalletAdapterNetwork, WalletError } from '@solana/wallet-adapter-base';
-import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import { WalletModalProvider as ReactUIWalletModalProvider } from '@solana/wallet-adapter-react-ui';
+import { WalletAdapterNetwork, WalletError } from '@j0nnyboi/wallet-adapter-base';
+import { ConnectionProvider, WalletProvider } from '@j0nnyboi/wallet-adapter-react';
+import { WalletModalProvider as ReactUIWalletModalProvider } from '@j0nnyboi/wallet-adapter-react-ui';
 import {
     PhantomWalletAdapter,
     SolflareWalletAdapter,
@@ -9,8 +9,8 @@ import {
     TorusWalletAdapter,
     // LedgerWalletAdapter,
     // SlopeWalletAdapter,
-} from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
+} from '@j0nnyboi/wallet-adapter-wallets';
+import { clusterApiUrl } from '@safecoin/web3.js';
 import { FC, ReactNode, useCallback, useMemo } from 'react';
 import { AutoConnectProvider, useAutoConnect } from './AutoConnectProvider';
 import { notify } from "../utils/notifications";
