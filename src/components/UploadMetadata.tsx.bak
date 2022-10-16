@@ -54,7 +54,7 @@ export const UploadMetadata: FC = ({}) => {
         `${selected.name}`,
         'solana',
         provider,
-        { providerUrl: 'https://api.devnet.safecoin.org' }
+        { providerUrl: 'https://api.devnet.solana.com' }
       );
     } else {
        bundler = new WebBundlr(
