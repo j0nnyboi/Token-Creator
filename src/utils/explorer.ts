@@ -20,5 +20,5 @@ export function getExplorerUrl(
       return cluster ? `?cluster=${cluster}` : ''
     }
   
-    return `https://explorer.solana.com/${itemType}/${viewTypeOrItemAddress}${getClusterUrlParam()}`
+    return `https://explorer.safecoin.org/${itemType}/${viewTypeOrItemAddress}${getClusterUrlParam()}`
   }
