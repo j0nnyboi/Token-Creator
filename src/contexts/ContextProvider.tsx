@@ -2,12 +2,12 @@ import { WalletAdapterNetwork, WalletError } from '@j0nnyboi/wallet-adapter-base
 import { ConnectionProvider, WalletProvider } from '@j0nnyboi/wallet-adapter-react';
 import { WalletModalProvider as ReactUIWalletModalProvider } from '@j0nnyboi/wallet-adapter-react-ui';
 import {
-    PhantomWalletAdapter,
-    SolflareWalletAdapter,
+    //PhantomWalletAdapter,
+    //SolflareWalletAdapter,
     SolletExtensionWalletAdapter,
     SolletWalletAdapter,
-    TorusWalletAdapter,
-    // LedgerWalletAdapter,
+    //TorusWalletAdapter,
+     LedgerWalletAdapter,
     // SlopeWalletAdapter,
 } from '@j0nnyboi/wallet-adapter-wallets';
 import { clusterApiUrl } from '@safecoin/web3.js';
@@ -22,12 +22,12 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     const wallets = useMemo(
         () => [
-            new PhantomWalletAdapter(),
-            new SolflareWalletAdapter(),
+            //new PhantomWalletAdapter(),
+            //new SolflareWalletAdapter(),
             new SolletWalletAdapter({ network }),
-            new SolletExtensionWalletAdapter({ network }),
-            new TorusWalletAdapter(),
-            // new LedgerWalletAdapter(),
+            //new SolletExtensionWalletAdapter({ network }),
+            //new TorusWalletAdapter(),
+             new LedgerWalletAdapter(),
             // new SlopeWalletAdapter(),
         ],
         [network]

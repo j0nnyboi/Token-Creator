@@ -1,7 +1,7 @@
 import { FC, useState, Fragment, useEffect } from 'react';
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
-import { WebBundlr } from '@bundlr-network/client';
+import { WebBundlr } from '@j0nnyboi/client';
 import { LAMPORTS_PER_SAFE } from '@safecoin/web3.js';
 import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 
@@ -52,14 +52,14 @@ export const UploadMetadata: FC = ({}) => {
     if (selected.name === 'https://devnet.bundlr.network') {
       bundler = new WebBundlr(
         `${selected.name}`,
-        'solana',
+        'safecoin',
         provider,
-        { providerUrl: 'https://api.devnet.solana.com' }
+        { providerUrl: 'https://api.devnet.safecoin.org' }
       );
     } else {
        bundler = new WebBundlr(
         `${selected.name}`,
-        'solana',
+        'safecoin',
         provider
       );
     }
@@ -68,7 +68,7 @@ export const UploadMetadata: FC = ({}) => {
 
     try {
       // Check for valid bundlr node
-      await bundler.utils.getBundlerAddress('solana');
+      await bundler.utils.getBundlerAddress('safecoin');
     } catch (err) {
       notify({ type: 'error', message: `${err}` });
       return;
@@ -122,7 +122,7 @@ export const UploadMetadata: FC = ({}) => {
   };
 
   const uploadImage = async () => {
-    const price = await bundlr.utils.getPrice('solana', imageFile.length);
+    const price = await bundlr.utils.getPrice('safecoin', imageFile.length);
     let amount = bundlr.utils.unitConverter(price);
     amount = amount.toNumber();
 
@@ -146,7 +146,7 @@ export const UploadMetadata: FC = ({}) => {
   };
 
   const uploadMetadata = async () => {
-    const price = await bundlr.utils.getPrice('solana', metadata.length);
+    const price = await bundlr.utils.getPrice('safecoin', metadata.length);
     let amount = bundlr.utils.unitConverter(price);
     amount = amount.toNumber();
 
@@ -206,7 +206,7 @@ export const UploadMetadata: FC = ({}) => {
                               key={bundler.id}
                               className={({ active }) =>
                                 classNames(
-                                  active ? 'text-white bg-purple-500' : 'text-gray-900',
+                                  active ? 'text-white bg-green-500' : 'text-gray-900',
                                   'cursor-default select-none relative py-2 pl-3 pr-9'
                                 )
                               }
@@ -243,7 +243,7 @@ export const UploadMetadata: FC = ({}) => {
           <div className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1'>
             <div className='px-4 py-5 bg-white space-y-6 sm:p-6'>
               <button
-                className='items-center px-3 py-2 text-xs btn animate-pulse bg-gradient-to-r from-[#9945FF] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ...'
+                className='items-center px-3 py-2 text-xs btn animate-pulse bg-gradient-to-r from-[#90f5c5] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ...'
                 onClick={async () => await initializeBundlr()}>
                 Connect
               </button>
@@ -263,8 +263,8 @@ export const UploadMetadata: FC = ({}) => {
               </h3>
               <p className='mt-1 text-sm text-gray-600'>
                 The Arweave URL for your stored image. Set this as the{' '}
-                <code className='text-purple-500 bg-purple-100'>image</code> and{' '}
-                <code className='text-purple-500 bg-purple-100'>uri</code> values in your
+                <code className='text-green-500 bg-green-100'>image</code> and{' '}
+                <code className='text-green-500 bg-green-100'>uri</code> values in your
                 metadata file.
               </p>
             </div>
@@ -290,7 +290,7 @@ export const UploadMetadata: FC = ({}) => {
                     <div className='flex text-sm text-gray-600'>
                       <label
                         htmlFor='image-upload'
-                        className='relative cursor-pointer bg-white rounded-md font-medium text-purple-500 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'>
+                        className='relative cursor-pointer bg-white rounded-md font-medium text-green-500 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'>
                         <span>Upload an image</span>
                         <input
                           id='image-upload'
@@ -320,7 +320,7 @@ export const UploadMetadata: FC = ({}) => {
             <div className='px-4 py-5 bg-white space-y-6 sm:p-6'>
               {!imageUrl && (
                 <button
-                  className='px-8 m-2 btn animate-pulse bg-gradient-to-r from-[#9945FF] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ...'
+                  className='px-8 m-2 btn animate-pulse bg-gradient-to-r from-[#90f5c5] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ...'
                   onClick={async () => uploadImage()}
                   disabled={!bundlr}>
                   Upload Image
@@ -367,7 +367,7 @@ export const UploadMetadata: FC = ({}) => {
                     <div className='flex text-sm text-gray-600'>
                       <label
                         htmlFor='file-upload'
-                        className='relative cursor-pointer bg-white rounded-md font-medium text-purple-500 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'>
+                        className='relative cursor-pointer bg-white rounded-md font-medium text-green-500 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500'>
                         <span>Upload a file</span>
                         <input
                           id='file-upload'
@@ -397,7 +397,7 @@ export const UploadMetadata: FC = ({}) => {
             <div className='px-4 py-5 bg-white space-y-6 sm:p-6'>
               {!metadataUrl && (
                 <button
-                  className='items-center px-3 py-2 text-xs btn animate-pulse bg-gradient-to-r from-[#9945FF] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ...'
+                  className='items-center px-3 py-2 text-xs btn animate-pulse bg-gradient-to-r from-[#90f5c5] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ...'
                   onClick={async () => uploadMetadata()}
                   disabled={!bundlr}>
                   Upload Metadata

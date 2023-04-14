@@ -21,6 +21,6 @@ a {
 
 /* example: override wallet button style */
 .wallet-adapter-button:not([disabled]):hover {
-  background-color: #707070;
+  background-color: #e1e1e1;
 }
 

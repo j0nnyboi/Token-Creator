@@ -77,7 +77,7 @@ export const UpdateMetadata: FC = () => {
         onChange={(e) => setMetadata(e.target.value)}
       />
       <button
-        className="px-8 m-2 btn animate-pulse bg-gradient-to-r from-[#9945FF] to-[#14F195] hover:from-pink-500 hover:to-yellow-500 ..."
+        className="px-8 m-2 btn bg-gradient-to-r from-[#90f5c5] to-[#90f5c5] hover:from-pink-500 hover:to-yellow-500 ..."
         onClick={() =>
           onClick({
             metadata: metadata,
