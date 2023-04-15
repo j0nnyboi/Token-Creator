@@ -3,7 +3,7 @@ import { useConnection, useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { Keypair, SystemProgram, Transaction } from '@safecoin/web3.js';
 import { MINT_SIZE, TOKEN_PROGRAM_ID, createInitializeMintInstruction, getMinimumBalanceForRentExemptMint, getAssociatedTokenAddress, createAssociatedTokenAccountInstruction, createMintToInstruction } from '@safecoin/safe-token';
 import { DataV2, createCreateMetadataAccountV2Instruction } from '@leda-mint-io/lpl-token-metadata';
-//import { findMetadataPda } from '@leda-mint-io/js';
+import { findMetadataPda } from '@leda-mint-io/js';
 
 export const CreateToken: FC = () => {
   const { connection } = useConnection();
@@ -17,7 +17,7 @@ export const CreateToken: FC = () => {
   const onClick = useCallback(async (form) => {
       const lamports = await getMinimumBalanceForRentExemptMint(connection);
       const mintKeypair = Keypair.generate();
-      //const metadataPDA = await findMetadataPda(mintKeypair.publicKey);
+      const metadataPDA = await findMetadataPda(mintKeypair.publicKey);
       const tokenATA = await getAssociatedTokenAddress(mintKeypair.publicKey, publicKey);
       const tokenMetadata = {
         name: form.tokenName, 
@@ -56,7 +56,7 @@ export const CreateToken: FC = () => {
           form.amount * Math.pow(10, form.decimals),
         ),
         createCreateMetadataAccountV2Instruction({
-            //metadata: metadataPDA,
+            metadata: metadataPDA,
             mint: mintKeypair.publicKey,
             mintAuthority: publicKey,
             payer: publicKey,

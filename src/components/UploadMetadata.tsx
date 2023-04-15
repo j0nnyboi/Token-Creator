@@ -8,7 +8,7 @@ import { useWallet } from '@j0nnyboi/wallet-adapter-react';
 import { notify } from '../utils/notifications';
 
 const bundlers = [
-  { id: 1, network: 'mainnet-beta', name: 'https://node1.bundlr.network' },
+  { id: 1, network: 'mainnet-beta', name: 'http://127.0.0.1:5555' },
   { id: 2, network: 'devnet', name: 'https://devnet.bundlr.network'},
 ]
 
@@ -47,50 +47,14 @@ export const UploadMetadata: FC = ({}) => {
   });
 
   const initializeBundlr = async () => {
-    // initialise a bundlr client
-    let bundler;
-    if (selected.name === 'https://devnet.bundlr.network') {
-      bundler = new WebBundlr(
-        `${selected.name}`,
-        'safecoin',
-        provider,
-        { providerUrl: 'https://api.devnet.safecoin.org' }
-      );
-    } else {
-       bundler = new WebBundlr(
-        `${selected.name}`,
-        'safecoin',
-        provider
-      );
-    }
+ 
 
-    console.log(bundler)
+    console.log(`${selected.name}`)
 
-    try {
-      // Check for valid bundlr node
-      await bundler.utils.getBundlerAddress('safecoin');
-    } catch (err) {
-      notify({ type: 'error', message: `${err}` });
-      return;
-    }
-    try {
-      await bundler.ready();
-    } catch (err) {
-      notify({ type: 'error', message: `${err}` });
-      return;
-    } //@ts-ignore
-    if (!bundler.address) {
-      notify({
-        type: 'error',
-        message: 'Unexpected error: bundlr address not found',
-      });
-    }
     notify({
       type: 'success',
       message: `Connected to ${selected.network}`,
     });
-    setAddress(bundler?.address);
-    setBundlr(bundler);
   };
 
   const handleImageChange = (event) => {
@@ -173,10 +137,10 @@ export const UploadMetadata: FC = ({}) => {
           <div className='md:col-span-1'>
             <div className='px-4 sm:px-0'>
               <h3 className='text-lg font-medium leading-6 text-gray-900'>
-                Bundler
+                Ledamint Bridge
               </h3>
               <p className='mt-1 text-sm text-gray-600'>
-                This is the bundler you will be using to upload your files
+                This is the ledamint bridge you will be using to upload your files
                 to Arweave.
               </p>
             </div>
